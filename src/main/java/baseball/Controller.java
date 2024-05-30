@@ -21,8 +21,7 @@ public class Controller {
     //    숫자 3개 입력 받기
     public String inputUserNumber(){
         System.out.print("숫자를 입력해주세요 : ");
-        String userNumber= Console.readLine();
-        return userNumber;
+        return Console.readLine();
     }
 
     //    유효성 검사
@@ -71,7 +70,7 @@ public class Controller {
     public int compareToSpot(List<Integer> com, List<Integer> user){
         int count= 0;
         for (int i= 0; i< com.size(); i++){
-            if(com.get(i)==user.get(i)){
+            if(com.get(i).equals(user.get(i))){
                 count++;
             }
         }
