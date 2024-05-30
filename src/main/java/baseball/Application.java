@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -16,7 +17,14 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answer= randomNumber();
 
-        inputUserNumber();
+        userNumber= inputUserNumber();
+
+        if (!validate(userNumber)){
+            System.out.println("잘못된 값을 입력하셨습니다.");
+            throw new IllegalArgumentException();
+        }else{
+
+        }
     }
 
     //    숫자 3개 뽑기
@@ -38,8 +46,34 @@ public class Application {
     }
 
     //    유효성 검사
-//    1. 숫자인가
-//    2. 중복인가
+    public static boolean validate(String number){
+        if (number.length()!=3){
+            return false;
+        }
+        if (!number.matches("^[1-9]+$")){
+            return false;
+        }
+        return checkDuplication(separate(number));
+    }
+    public static List<Integer> separate(String number){
+        List<Integer> list= new ArrayList<>();
+        String[] temp=number.split("");
+        for(String s: temp){
+            list.add(Integer.parseInt(s));
+        }
+        return list;
+    }
+    public static boolean checkDuplication(List<Integer> list){
+        for (int i=0; i<list.size()-1; i++){
+            int target=list.get(i);
+            for (int j=i+1; j<list.size();j++) {
+                if (target == list.get(j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 //    숫자 비교하기
 
