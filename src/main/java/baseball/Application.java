@@ -27,6 +27,7 @@ public class Application {
             int ball= compareToNumber(computer, user);
             int strike= compareToSpot(computer, user);
 
+            printHint(ball, strike);
         }
     }
 
@@ -101,6 +102,15 @@ public class Application {
     }
 
 //    힌트/결과 출력하기
+    public static void printHint(int ball, int strike){
+        if (ball==0){
+            System.out.println("낫싱");
+        }else if (strike!=3){
+            System.out.printf("%d볼 %d스트라이크", ball-strike, strike);
+        }else {
+            System.out.println(strike+"스트라이크");
+        }
+    }
 
 //    재시작 혹은 종료
 }
