@@ -29,7 +29,7 @@ public class Viewer {
 
                     controller.printHint(ball, strike);
                     if (strike == computer.size()) {
-                        System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임종료");
+                        System.out.print(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                         break;
                     }
                 }
