@@ -12,30 +12,33 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String userNumber;
-        boolean numberMatched = false;
+        int start= 1;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computer= randomNumber();
-        for(int c: computer){
-            System.out.printf("%d\t", c);
-        }
-        while(!numberMatched) {
-            userNumber = inputUserNumber();
+        while(start==1) {
 
-            if (!validate(userNumber)) {
-                System.out.println("잘못된 값을 입력하셨습니다.");
-                throw new IllegalArgumentException();
-            } else {
-                List<Integer> user = separate(userNumber);
-                int ball = compareToNumber(computer, user);
-                int strike = compareToSpot(computer, user);
+            List<Integer> computer = randomNumber();
 
-                printHint(ball, strike);
-                if (strike== computer.size()){
-                    System.out.println(strike+"개의 숫자를 모두 맞히셨습니다! 게임종료");
-                    break;
+            while (true) {
+                userNumber = inputUserNumber();
+
+                if (!validate(userNumber)) {
+                    System.out.println("잘못된 값을 입력하셨습니다.");
+                    throw new IllegalArgumentException();
+                } else {
+                    List<Integer> user = separate(userNumber);
+                    int ball = compareToNumber(computer, user);
+                    int strike = compareToSpot(computer, user);
+
+                    printHint(ball, strike);
+                    if (strike == computer.size()) {
+                        System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임종료");
+                        break;
+                    }
                 }
             }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            start= Integer.parseInt(Console.readLine());
         }
     }
 
@@ -119,6 +122,4 @@ public class Application {
             System.out.println(strike+"스트라이크");
         }
     }
-
-//    재시작 혹은 종료
 }
