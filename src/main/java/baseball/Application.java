@@ -15,7 +15,7 @@ public class Application {
         boolean numberMatched = false;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> answer= randomNumber();
+        List<Integer> computer= randomNumber();
 
         userNumber= inputUserNumber();
 
@@ -23,6 +23,8 @@ public class Application {
             System.out.println("잘못된 값을 입력하셨습니다.");
             throw new IllegalArgumentException();
         }else{
+            List<Integer> user= separate(userNumber);
+            int ball= compareToNumber(computer, user);
 
         }
     }
@@ -76,6 +78,15 @@ public class Application {
     }
 
 //    숫자 비교하기
+    public static int compareToNumber(List<Integer> com, List<Integer> user){
+        int count=0;
+        for (int i: user){
+            if(com.contains(i)){
+                count++;
+            }
+        }
+        return count;
+    }
 
 //    자리 비교하기
 
