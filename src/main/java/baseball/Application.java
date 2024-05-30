@@ -25,6 +25,7 @@ public class Application {
         }else{
             List<Integer> user= separate(userNumber);
             int ball= compareToNumber(computer, user);
+            int strike= compareToSpot(computer, user);
 
         }
     }
@@ -89,6 +90,15 @@ public class Application {
     }
 
 //    자리 비교하기
+    public static int compareToSpot(List<Integer> com, List<Integer> user){
+        int count= 0;
+        for (int i= 0; i< com.size(); i++){
+            if(com.get(i)==user.get(i)){
+                count++;
+            }
+        }
+        return count;
+    }
 
 //    힌트/결과 출력하기
 
