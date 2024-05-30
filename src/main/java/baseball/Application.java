@@ -16,6 +16,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answer= randomNumber();
 
+        inputUserNumber();
     }
 
     //    숫자 3개 뽑기
@@ -30,6 +31,11 @@ public class Application {
         return list;
     }
 //    숫자 3개 입력 받기
+    public static String inputUserNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String userNumber= Console.readLine();
+        return userNumber;
+    }
 
     //    유효성 검사
 //    1. 숫자인가
